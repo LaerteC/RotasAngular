@@ -1,15 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
-}) 
+  providedIn: 'root',
+})
 export class ExemploService {
+  constructor(private http: HttpClient) {}
 
-  public exemplo(){
 
+  public exemplo(): Promise<any> {
     
-      console.log('Ola Laerte Tudo bem ')
-    
-    
+    //console.log('Ola Laerte Tudo bem ')
+    return new Promise((resolve, reject) => {
+      this.http.get('https://api.adviceslip.com/advice').subscribe({
+        next: (v) => resolve(v),
+
+        error: (v) => reject(v),
+      });
+    });
   }
 }

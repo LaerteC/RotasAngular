@@ -38,10 +38,11 @@ export class AppComponent {
     return this.obterHoraAtual() <=12;
   }
 
-  public aoClicarBotao():void{
+  public async aoClicarBotao():Promise<void>{
     this.valorAtual ++;
 
-    this.ExemploService.exemplo();
+    const result = await this.ExemploService.exemplo();
+    console.log(result)
   }
 
 }
