@@ -1,0 +1,12 @@
+<div class="">
+
+    <strong> Nome Completo : {{ nomeTodo}}</strong>
+
+    <p *ngIf="idade">
+        <strong> Idade : {{idade}} </strong>
+    </p>
+
+    <button (click)="fazerAniversario()"> Fazer Aniversário !!!</button>
+</div>
+
+<ng-content></ng-content>

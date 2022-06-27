@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExemploService } from './exemplo.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,41 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aula-angular';
+
+  nomePessoa:string ='';
+  title:string = 'aula-angular';
+  placeholder:string='Informe o seu nome ';
+  nomes: Array<string> = ['Douglas','Laerte','Cristiano Ronaldo','Messi','Pelé'];
+  valorAtual:number = 0;
+
+  constructor(private ExemploService:ExemploService){
+    setTimeout(() => {
+      this.title ='Teste Laerte'
+    }, 5000 );
+  }
+
+  public obterHoraAtual():number{
+      return new Date().getHours();
+  }
+
+  public jaEnoite(): boolean{
+    return this.obterHoraAtual() > 18;
+  }
+
+  public jaETarde():boolean{
+
+    return this.obterHoraAtual()<= 18 && this.obterHoraAtual()> 12;
+  }
+
+  public jaEDia():boolean{
+
+    return this.obterHoraAtual() <=12;
+  }
+
+  public aoClicarBotao():void{
+    this.valorAtual ++;
+
+    this.ExemploService.exemplo();
+  }
+
 }
